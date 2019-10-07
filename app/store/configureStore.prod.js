@@ -4,19 +4,17 @@ import thunk from 'redux-thunk';
 import { createHashHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import createRootReducer from '../reducers';
-import type { counterStateType } from '../reducers/types';
+import apiMiddleware from '../middleware/middleware';
+// import * as authActions from '../actions/auth';
+// import * as contactsActions from '../actions/contacts';
 
 const history = createHashHistory();
 const rootReducer = createRootReducer(history);
 const router = routerMiddleware(history);
-const enhancer = applyMiddleware(thunk, router);
+const enhancer = applyMiddleware(apiMiddleware, thunk, router);
 
-function configureStore(initialState?: counterStateType) {
-  return createStore<*, counterStateType, *>(
-    rootReducer,
-    initialState,
-    enhancer
-  );
+function configureStore() {
+  return createStore(rootReducer, [], enhancer);
 }
 
 export default { configureStore, history };

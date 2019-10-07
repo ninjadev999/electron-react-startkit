@@ -1,5 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import { themeMaterial } from '../styles/material/index';
 import paths from './paths';
 
 function renderRoute(route, key) {
@@ -7,7 +9,11 @@ function renderRoute(route, key) {
     <Route
       exact={route.exact}
       path={route.path}
-      render={props => <route.component {...props} />}
+      render={props => (
+        <route.layout>
+          <route.component {...props} />
+        </route.layout>
+      )}
       key={key}
     />
   );
@@ -20,6 +26,10 @@ function renderRoutes(routes) {
   });
 }
 
-const Index = () => <Switch>{renderRoutes(paths)}</Switch>;
+const Index = () => (
+  <MuiThemeProvider theme={themeMaterial}>
+    <Switch>{renderRoutes(paths)}</Switch>
+  </MuiThemeProvider>
+);
 
 export default Index;

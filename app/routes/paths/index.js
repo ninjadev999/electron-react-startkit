@@ -1,17 +1,26 @@
-import HomePage from '../../containers/HomePage';
-import CounterPage from '../../containers/CounterPage';
+import HomeContainer from '../../containers/HomeContainer';
+import LoginContainer from '../../containers/LoginContainer';
+import ContactsContainer from '../../containers/ContactsContainer';
+import DroplrHomeContainer from '../../containers/templates/DroplrHomeContainer';
+import DroplrContainer from '../../containers/templates/DroplrContainer';
 
 const productionRoutes = [
   {
     path: '/',
-    // layout: HeadshotHomeContainer,
-    component: HomePage,
+    layout: DroplrHomeContainer,
+    component: HomeContainer,
     exact: true
   },
   {
-    path: '/counter',
-    // layout: HeadshotHomeContainer,
-    component: CounterPage,
+    path: '/login',
+    layout: DroplrContainer,
+    component: LoginContainer,
+    exact: true
+  },
+  {
+    path: '/contacts',
+    layout: DroplrHomeContainer,
+    component: ContactsContainer,
     exact: true
   }
 ];
