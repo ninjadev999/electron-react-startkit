@@ -45,8 +45,9 @@ class Login extends React.Component<Props> {
   };
 
   handleChange = name => event => {
+    console.log('==== name: ', name);
     this.setState({
-      [name]: event.target.value
+      [event.target.name]: event.target.value
     });
   };
 
@@ -81,7 +82,7 @@ class Login extends React.Component<Props> {
                         type="email"
                         autoComplete="email"
                         value={email}
-                        onChange={() => this.handleChange('email')}
+                        onChange={this.handleChange('email')}
                         fullWidth
                         autoFocus
                         margin="normal"
@@ -96,7 +97,7 @@ class Login extends React.Component<Props> {
                         type="password"
                         autoComplete="password"
                         value={password}
-                        onChange={() => this.handleChange('password')}
+                        onChange={this.handleChange('password')}
                         fullWidth
                         autoFocus
                         margin="normal"
