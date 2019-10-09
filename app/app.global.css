@@ -3,15 +3,35 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 @import '~@fortawesome/fontawesome-free/css/all.css';
+@font-face {
+  font-family: 'CircularStd-Black';
+  src: url('../resources/fonts/CircularStd-Black.otf');
+}
+
+@font-face {
+  font-family: 'CircularStd-Bold';
+  src: url('../resources/fonts/CircularStd-Bold.otf');
+}
+
+@font-face {
+  font-family: 'CircularStd-Book';
+  src: url('../resources/fonts/CircularStd-Book.otf');
+}
+
+@font-face {
+  font-family: 'CircularStd-Medium';
+  src: url('../resources/fonts/CircularStd-Medium.otf');
+}
 
 body {
   position: relative;
   color: white;
   height: 100vh;
-  background-color: #232c39;
-  background-image: linear-gradient(45deg, #9575cd, #512da8);
-  font-family: Arial, Helvetica, Helvetica Neue, serif;
-  overflow-y: hidden;
+  background-color: #80808036;
+
+  /* background-image: linear-gradient(45deg, #9575cd, #512da8); */
+  font-family: 'CircularStd-Book', Arial, Helvetica, Helvetica Neue, serif;
+  overflow-y: scroll;
 }
 
 h2 {
@@ -44,4 +64,201 @@ a:hover {
 
 #root {
   height: 100%;
+}
+
+.tabs-container {
+  display: block;
+  margin-bottom: 20px;
+  line-height: 21px;
+  color: #999;
+}
+.tabs-container .wrapper {
+  overflow: hidden;
+
+  /* contain the panel to the size of the nav */
+}
+.tabs-container .wrapper.content-wrap {
+  display: table;
+}
+.tabs-container .tab-nav {
+  position: relative;
+  top: 1px;
+  z-index: 1;
+}
+.tabs-container .bottom-nav .tab-nav {
+  top: -1px;
+}
+.tabs-container .wrapper.content-wrap .tab-nav {
+  white-space: nowrap;
+}
+.tabs-container .tab-nav-item {
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-bottom: none;
+  border-left-color: transparent;
+  padding: 8px 12px;
+}
+.tabs-container .wrapper.content-wrap .tab-nav .tab-nav-item {
+  display: inline-table;
+}
+.tabs-container .tab-panel {
+  position: relative;
+
+  /* border-top: 1px solid #BBB; */
+  z-index: 0;
+}
+.tabs-container .bottom-nav .tab-panel {
+  border-top: none;
+  border-bottom: 1px solid #bbb;
+}
+.tabs-container .wrapper.content-wrap > .tab-panel {
+  display: table-caption;
+  caption-side: bottom;
+}
+.tabs-container .wrapper.bottom-nav .tab-nav {
+  caption-side: bottom;
+}
+.tabs-container .wrapper.bottom-nav .tab-panel {
+  caption-side: top;
+}
+.tabs-container .tab-nav-item.active {
+  border-radius: 5px 5px 0 0;
+  background: white;
+
+  /* border: 1px solid #BBB; */
+  border-bottom: 1px solid transparent;
+  color: #272c5e !important;
+}
+.tabs-container .bottom-nav .tab-nav-item.active {
+  border-radius: 0 0 5px 5px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid #bbb;
+}
+.tabs-container .tab-panel-item {
+  border-radius: 0 4% 4%;
+  display: none;
+  overflow: hidden;
+  padding: 15px;
+}
+.tabs-container .tab-panel-item.active {
+  display: block;
+}
+.tabs-container.fade .tab-panel-item {
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+  opacity: 0;
+  display: block;
+  position: absolute;
+}
+.tabs-container.fade.fadeOut .tab-panel-item.active {
+  position: relative;
+  opacity: 0;
+}
+.tabs-container.fade.fadeIn .tab-panel-item.active {
+  position: relative;
+  opacity: 1;
+}
+.tabs-container .img-left {
+  float: left;
+  padding: 0 12px 0 0;
+}
+.tabs-container p {
+  margin-top: 0;
+  font-size: 13px;
+}
+.tabs-container .tab-icon {
+  width: 20px;
+  height: 15px;
+  position: relative;
+  top: 4px;
+  left: -2px;
+}
+
+/* Theme folder */
+.tabs-container.theme-folder > .wrapper > .tab-nav .tab-nav-item {
+  background: none;
+  color: black;
+  opacity: 0.5;
+}
+.tabs-container.theme-folder > .wrapper > .tab-nav .tab-nav-item.active {
+  opacity: 1;
+  border: none;
+  background-color: #aaa;
+  border-radius: 5px 5px 0 0;
+}
+.tabs-container.theme-folder > .wrapper > .tab-nav .tab-nav-item .tab-icon {
+  display: none;
+}
+.tabs-container.theme-folder
+  > .wrapper
+  > .tab-nav
+  .tab-nav-item.active
+  .tab-icon {
+  display: inline-block;
+}
+.tabs-container.theme-folder > .wrapper > .tab-panel {
+  color: black;
+  border: none;
+  background: none;
+}
+.tabs-container.theme-folder > .wrapper > .tab-panel .tab-panel-item.active {
+  background: #aaa;
+  border-radius: 0 0 5px 5px;
+}
+
+.tabs-container.theme-folder > .wrapper.bottom-nav > .tab-nav {
+  top: 0;
+}
+.tabs-container.theme-box > .wrapper > .tab-nav .tab-nav-item.active {
+  background-color: #fff;
+  color: #333;
+  border-bottom: 1px solid white;
+  border-top: 3px solid red;
+  border-left-color: #bbb;
+}
+.tabs-container.theme-folder
+  > .wrapper.bottom-nav
+  > .tab-nav
+  .tab-nav-item.active {
+  border-radius: 0 0 5px 5px;
+}
+
+.tabs-container.theme-folder
+  > .wrapper.bottom-nav
+  > .tab-panel
+  .tab-panel-item.active {
+  border-radius: 5px 5px 0 0;
+}
+
+/* Theme box */
+.tabs-container.theme-box > .wrapper > .tab-nav .tab-nav-item {
+  border: 1px solid #bbb;
+  border-bottom: none;
+  border-left-color: transparent;
+  border-radius: 0;
+  background: #ccc;
+  color: white;
+  position: relative;
+  top: 1px;
+}
+.tabs-container.two-rows > .wrapper > .tab-nav .tab-nav-item {
+  line-height: 15px;
+}
+.tabs-container.theme-box > .wrapper > .tab-nav .tab-nav-item:first-child {
+  border-left: 1px solid #bbb;
+}
+
+.tabs-container.theme-box > .wrapper > .tab-panel {
+  background: #fff;
+  border: 1px solid #bbb;
+  border-top: none;
+}
+
+/* Theme two rows */
+.tabs-container.two-rows > .wrapper > .tab-nav .tab-nav-item sub {
+  display: block;
+  font-size: 75%;
 }

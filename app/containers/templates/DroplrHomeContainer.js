@@ -1,34 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import DroplrScreen from './DroplrScreen';
-import DroplrHeader from './DroplrHeader';
+import { withStyles } from '@material-ui/core/styles';
+import { materialStyles } from '../../styles/material/index';
 
 class DroplrHomeContainer extends Component {
   static defaultProps = {
     children: <div />,
-    onChangeMenu: () => {}
+    classes: {}
   };
 
   render() {
-    const { children, onChangeMenu } = this.props;
+    const { children, classes } = this.props;
 
     return (
-      <div id="droplr-home-container">
-        <DroplrScreen Layout={DroplrHeader} onChangeMenu={onChangeMenu} />
-        <Grid container spacing={0}>
-          <Grid item xs={12}>
-            {children}
-          </Grid>
-        </Grid>
-      </div>
+      <Fragment>
+        <div id="droplr-container" className={[classes.droplrContainer]}>
+          {children}
+        </div>
+      </Fragment>
     );
   }
 }
 
 DroplrHomeContainer.propTypes = {
   children: PropTypes.element,
-  onChangeMenu: PropTypes.func
+  classes: PropTypes.objectOf(PropTypes.object)
 };
 
-export default DroplrHomeContainer;
+export default withStyles(materialStyles)(DroplrHomeContainer);

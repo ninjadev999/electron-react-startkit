@@ -1,11 +1,12 @@
 import * as types from '../actions/actionTypes';
+import defaultContacts from '../constants/contacts';
 
 const initialContactsState = {
   init: true,
   isFetched: false,
   errorMessage: false,
   isFailure: false,
-  value: null
+  value: defaultContacts
 };
 
 export default (state = initialContactsState, action) => {

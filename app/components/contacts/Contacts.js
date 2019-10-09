@@ -1,17 +1,28 @@
 // @flow
 import React, { Component } from 'react';
-import styles from './styles.css';
+// import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
+import ContactsTable from './ContactsTable';
+import { materialStyles } from '../../styles/material';
 
-type Props = {};
-
-export default class Contacts extends Component<Props> {
-  props: Props;
-
+class Contacts extends Component<Props> {
   render() {
+    const { classes } = this.props;
     return (
-      <div className={styles.container} data-tid="container">
-        <h2>Home</h2>
-      </div>
+      <Grid container>
+        <Grid item xs={12}>
+          <div className={classes.pageTitle}>How to create idea for SaaS?</div>
+        </Grid>
+        <Grid item xs={12}>
+          <div className={classes.taleTitle}>Registrats</div>
+        </Grid>
+        <Grid item xs={12}>
+          <ContactsTable />
+        </Grid>
+      </Grid>
     );
   }
 }
+
+export default withStyles(materialStyles)(Contacts);

@@ -5,7 +5,7 @@ import blue from '@material-ui/core/colors/blue';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const drawerWidth = 240;
-const fontFamily = "'Clarkson',Helvetica,sans-serif";
+const fontFamily = 'CircularStd-Book';
 
 export const Color = {
   white: 'white',
@@ -180,7 +180,8 @@ export const materialStyles = theme => ({
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
+    whiteSpace: 'nowrap'
   },
   drawerPaper: {
     width: drawerWidth
@@ -198,6 +199,20 @@ export const materialStyles = theme => ({
     textAlign: 'left',
     marginLeft: '10px',
     marginRight: 'auto'
+  },
+  drawerClose: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    }),
+    overflowX: 'hidden',
+    width: theme.spacing(7) + 1,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9) + 1
+    }
+  },
+  homeDrawerBackgrandColor: {
+    backgroundColor: theme.palette.primary.main
   },
   appBar: {
     width: '100%',
@@ -321,6 +336,9 @@ export const materialStyles = theme => ({
   fontMiddleWeight: {
     fontWeight: 400
   },
+  textColor: {
+    color: '#272C5E'
+  },
   italicText: {
     fontStyle: 'italic'
   },
@@ -431,7 +449,94 @@ export const materialStyles = theme => ({
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
-    alignCtems: 'center'
+    alignContent: 'center'
+  },
+  vScroll: {
+    position: 'relative',
+    overflowY: 'scroll'
+  },
+  pageTitle: {
+    color: theme.typography.textPrimary,
+    fontWeight: '600',
+    fontSize: 20,
+    paddingTop: 20,
+    paddingBottom: 20
+  },
+  taleTitle: {
+    color: theme.typography.textPrimary,
+    fontWeight: '600',
+    fontSize: 30,
+    paddingTop: 20,
+    paddingBottom: 20
+  },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end'
+  },
+  modalPaper: {
+    backgroundColor: '#F5F6FA',
+    // border: '2px solid #000',
+    // boxShadow: theme.shadows[5],
+    // padding: theme.spacing(2, 4, 3),
+    height: '100%'
+  },
+  contactContainer: {
+    maxWidth: 350,
+    minWidth: 350,
+    paddingRight: 15,
+    paddingLeft: 15
+  },
+  contactUserInfoContainer: {
+    paddingTop: 15,
+    paddingButtom: 15
+  },
+  contactUserAvatar: {
+    color: '#fff',
+    backgroundColor: '#7F88B2',
+    fontSize: 30,
+    width: 65,
+    height: 65,
+    borderRadius: '28%'
+  },
+  contactUserName: {
+    color: theme.typography.textPrimary,
+    fontSize: 16,
+    paddingTop: 11,
+    paddingBottom: 11
+  },
+  contactAdditionalInfoContainer: {
+    padding: 12
+  },
+  tabTitle: {
+    fontSize: 14,
+    fontWeight: 200
+  },
+  tabTextDescription: {
+    color: '#ACB5C3',
+    fontSize: 10,
+    fontWeight: 100
+  },
+  tabText: {
+    color: theme.typography.textPrimary,
+    fontSize: 14,
+    fontWeight: 100
+  },
+  tabGridItem: {
+    paddingTop: 5,
+    paddingBottom: 10
+  },
+  leftSideBarBrand: {
+    width: 40,
+    margin: 0,
+    padding: 0
+  },
+  leftSideBarAvatar: {
+    position: 'absolute',
+    bottom: 0
+  },
+  leftSideBarSelectItems: {
+    margin: 'auto'
   }
 });
 
@@ -497,7 +602,9 @@ export const themeMaterial = createMuiTheme({
     fontFamily,
     textTransform: 'none',
     useNextVariants: true,
-    color: '#FFFFFF'
+    color: '#272C5E',
+    textPrimary: '#272C5E',
+    textSecondary: '#000000'
   },
   button: {
     primaryColor: '#000000',

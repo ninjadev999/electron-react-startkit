@@ -1,34 +1,44 @@
 // @flow
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import compose from 'recompose/compose';
+import { withStyles } from '@material-ui/core/styles';
+import LeftSideBar from '../sidebars/LeftSideBar';
+import { materialStyles } from '../../styles/material';
+import Contacts from '../contacts/Contacts';
 
-export default class Home extends Component<Props> {
+class Home extends Component {
   static defaultProps = {
     // auth: {},
-    isAuthenticated: false,
+    // isAuthenticated: false,
     // loginActions: {},
     // contactsActions: {},
     classes: {}
   };
 
+  componentWillReceiveProps() {
+    // if (!isAuthenticated) return <Redirect to="/login" />;
+  }
+
   render() {
-    const { isAuthenticated, classes } = this.props;
-
-    if (!isAuthenticated) return <Redirect to="/login" />;
-
+    const { classes } = this.props;
     return (
-      <div className={classes.container} data-tid="container">
-        <h2>Home</h2>
-      </div>
+      <Fragment>
+        <LeftSideBar />
+        <main className={classes.content}>
+          <Contacts />
+        </main>
+      </Fragment>
     );
   }
 }
 
 Home.propTypes = {
   // auth: PropTypes.objectOf(PropTypes.object),
-  isAuthenticated: PropTypes.bool,
+  // isAuthenticated: PropTypes.bool,
   // loginActions: PropTypes.objectOf(PropTypes.object),
   // contactsActions: PropTypes.objectOf(PropTypes.object),
   classes: PropTypes.objectOf(PropTypes.object)
 };
+
+export default compose(withStyles(materialStyles))(Home);
